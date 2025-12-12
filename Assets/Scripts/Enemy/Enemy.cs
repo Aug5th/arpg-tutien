@@ -11,5 +11,8 @@ public class Enemy : MonoBehaviour
         health = GetComponent<Health>();
     }
 
-    // thêm logic AI/đi lại/attack vào đây; health và healthbar đã tách ra
+    void Start()
+    {
+        health.SetMaxHealthFromStats(100); // example value , will be replaced by EnemyStats
+    }
 }
