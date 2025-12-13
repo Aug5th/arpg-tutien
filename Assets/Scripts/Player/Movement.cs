@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
     public float stopDistance = 0.05f;
 
     private Rigidbody2D rb;
+    private UnitStats stats;
     private Vector2 targetPosition;
     private bool hasTarget = false;
 
@@ -18,6 +19,7 @@ public class Movement : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        stats = GetComponent<UnitStats>();
         targetPosition = rb.position;
         currentStopDistance = stopDistance;
     }
@@ -25,11 +27,24 @@ public class Movement : MonoBehaviour
     void OnEnable()
     {
         MouseInput.OnRightClick += HandleMouseRightClick;
+        if (stats != null)
+        {
+            stats.OnStatsChanged += UpdateStats;
+            UpdateStats();
+        }
     }
 
     void OnDisable()
     {
         MouseInput.OnRightClick -= HandleMouseRightClick;
+        if (stats != null)
+            stats.OnStatsChanged -= UpdateStats;
+    }
+
+    void UpdateStats()
+    {
+        if (stats == null) return;
+        moveSpeed = stats.MoveSpeed;
     }
 
     void HandleMouseRightClick(Vector2 worldPosition)

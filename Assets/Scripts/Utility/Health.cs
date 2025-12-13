@@ -14,8 +14,38 @@ public class Health : MonoBehaviour, IDamagable
     /// <summary>0..1 health percent changed</summary>
     public event Action<float> OnHealthChanged;
 
+    private UnitStats unitStats;
+
+    void OnEnable()
+    {
+        if(unitStats != null)
+        {
+            unitStats.OnStatsChanged += UpdateHealthFromStats;
+            UpdateHealthFromStats();
+        }
+    }
+
+    private void UpdateHealthFromStats()
+    {
+        if(unitStats == null)   
+        {
+            return;
+        }
+        int newMaxHP = Mathf.Max(1, Mathf.RoundToInt(unitStats.GetStat(StatType.MaxHP)));
+        SetMaxHealthFromStats(newMaxHP);
+    }
+
+    void OnDisable()
+    {
+        if(unitStats != null)
+        {
+            unitStats.OnStatsChanged -= UpdateHealthFromStats;
+        }
+    }
+
     void Awake()
     {
+        unitStats = GetComponent<UnitStats>();
         if (maxHealth <= 0) maxHealth = 1;
 
         if (currentHealth <= 0)
@@ -55,6 +85,7 @@ public class Health : MonoBehaviour, IDamagable
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         float pct = (float)currentHealth / maxHealth;
+        
         OnHealthChanged?.Invoke(pct);
 
         if (currentHealth <= 0) Die();
@@ -66,6 +97,7 @@ public class Health : MonoBehaviour, IDamagable
         if (amount <= 0) return;
 
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+        
         OnHealthChanged?.Invoke((float)currentHealth / maxHealth);
     }
 
@@ -73,7 +105,9 @@ public class Health : MonoBehaviour, IDamagable
     {
         if (IsDead) return;
         IsDead = true;
+        
         OnHealthChanged?.Invoke(0f);
+        
         Destroy(gameObject);
     }
 }

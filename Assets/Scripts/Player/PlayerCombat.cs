@@ -11,21 +11,37 @@ public class PlayerCombat : MonoBehaviour
 
     private IDamagable currentTarget;
     private Movement movement;
+    private UnitStats stats;
     private Coroutine attackRoutine;
 
     void Awake()
     {
         movement = GetComponent<Movement>();
+        stats = GetComponent<UnitStats>();
     }
 
     void OnEnable()
     {
         MouseInput.OnRightClickTarget += HandleRightClickOnTarget;
+        if (stats != null)
+        {
+            stats.OnStatsChanged += UpdateStats;
+            UpdateStats();
+        }
     }
 
     void OnDisable()
     {
         MouseInput.OnRightClickTarget -= HandleRightClickOnTarget;
+        if (stats != null)
+            stats.OnStatsChanged -= UpdateStats;
+    }
+
+    void UpdateStats()
+    {
+        if (stats == null) return;
+        damage = stats.Attack;
+        attackSpeed = stats.GetStat(StatType.AttackSpeed);
     }
 
     void HandleRightClickOnTarget(IDamagable target)

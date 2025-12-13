@@ -269,10 +269,10 @@ GameObject:
   - component: {fileID: 1208396745}
   - component: {fileID: 1208396744}
   - component: {fileID: 1208396746}
-  - component: {fileID: 1208396747}
   - component: {fileID: 1208396748}
+  - component: {fileID: 1208396749}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Boar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -392,19 +392,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1208396747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1208396743}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abba6539ce4f53f44a2cb96cc8476dba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackDamage: 5
 --- !u!114 &1208396748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,6 +406,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   currentHealth: 0
+--- !u!114 &1208396749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208396743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3860c43ae23bc4c49acf6a7249dd547c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDefinition: {fileID: 11400000, guid: 120474f256dee00488c53d6f7716f7b4, type: 2}
+  finalStats:
+    baseStats: []
 --- !u!1 &1380552978
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,7 +519,7 @@ GameObject:
   - component: {fileID: 1678710840}
   - component: {fileID: 1678710841}
   - component: {fileID: 1678710843}
-  - component: {fileID: 1678710842}
+  - component: {fileID: 1678710844}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -649,28 +651,6 @@ MonoBehaviour:
   damage: 2
   attackSpeed: 1
   attackRange: 1.2
---- !u!114 &1678710842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1678710836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07a75dd183f8f4a448f3e8e5d58b10d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseStats:
-    baseStats:
-    - statType: 0
-      value: 100
-    - statType: 1
-      value: 20
-    - statType: 2
-      value: 20
-  finalStats:
-    baseStats: []
 --- !u!114 &1678710843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -685,6 +665,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   currentHealth: 0
+--- !u!114 &1678710844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678710836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3860c43ae23bc4c49acf6a7249dd547c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDefinition: {fileID: 11400000, guid: 3d33bc762fa908740b37b300c908896b, type: 2}
+  finalStats:
+    baseStats: []
 --- !u!1 &1695122415
 GameObject:
   m_ObjectHideFlags: 0

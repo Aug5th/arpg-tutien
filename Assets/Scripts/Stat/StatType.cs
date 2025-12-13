@@ -5,7 +5,8 @@ public enum StatType
     Attack = 2,
     Defense = 3,
     MoveSpeed = 4,
-    CritChance = 5,
-    CritDamage = 6,
-    AttackSpeed = 7,
+    AttackSpeed = 5,
+    CritChance = 6,
+    CritDamage = 7,
+    
 }
