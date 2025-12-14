@@ -17,7 +17,7 @@ MonoBehaviour:
   baseStats:
     baseStats:
     - statType: 0
-      value: 40
+      value: 100
     - statType: 1
       value: 0
     - statType: 2
