@@ -10,9 +10,8 @@ public class Health : MonoBehaviour, IDamagable
 
     public bool IsDead { get; private set; } = false;
     public Transform Transform => this.transform;
-
-    /// <summary>0..1 health percent changed</summary>
     public event Action<float> OnHealthChanged;
+    public event Action OnDeath;
 
     private UnitStats unitStats;
 
@@ -104,10 +103,10 @@ public class Health : MonoBehaviour, IDamagable
     void Die()
     {
         if (IsDead) return;
+        
         IsDead = true;
-        
-        OnHealthChanged?.Invoke(0f);
-        
+
+        OnDeath?.Invoke();
         Destroy(gameObject);
     }
 }

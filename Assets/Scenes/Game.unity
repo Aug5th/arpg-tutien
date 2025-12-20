@@ -271,8 +271,9 @@ GameObject:
   - component: {fileID: 1208396746}
   - component: {fileID: 1208396748}
   - component: {fileID: 1208396749}
+  - component: {fileID: 1208396750}
   m_Layer: 0
-  m_Name: Boar
+  m_Name: Boss_HoYeu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -421,6 +422,19 @@ MonoBehaviour:
   baseDefinition: {fileID: 11400000, guid: 120474f256dee00488c53d6f7716f7b4, type: 2}
   finalStats:
     baseStats: []
+--- !u!114 &1208396750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208396743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9bb24b715554454fb59da058b02f721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropTable: {fileID: 11400000, guid: aa479e677b6da1849bd4734791a47741, type: 2}
 --- !u!1 &1380552978
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,6 +534,8 @@ GameObject:
   - component: {fileID: 1678710841}
   - component: {fileID: 1678710843}
   - component: {fileID: 1678710844}
+  - component: {fileID: 1678710846}
+  - component: {fileID: 1678710845}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -682,6 +698,35 @@ MonoBehaviour:
   baseDefinition: {fileID: 11400000, guid: 3d33bc762fa908740b37b300c908896b, type: 2}
   finalStats:
     baseStats: []
+--- !u!114 &1678710845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678710836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5daf757802bef794598e849a32077edc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentGems: 0
+  items: []
+--- !u!114 &1678710846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678710836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a88542c9deeacee4dbbe278bb8f8a7e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLevel: 1
+  currentXP: 0
+  maxXP: 100
 --- !u!1 &1695122415
 GameObject:
   m_ObjectHideFlags: 0
