@@ -4,17 +4,19 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [Header("Movement")]
-    public float moveSpeed = 5f;
-    public float stopDistance = 0.05f;
+    public float moveSpeed = 8f;
+    public float stopDistance = 0.1f; // Slightly increased to make stopping easier
+    public float rotateSpeed = 10f;   // Rotation speed
 
     private Rigidbody2D rb;
     private UnitStats stats;
-    private Vector2 targetPosition;
+    private Vector3 targetPosition;
     private bool hasTarget = false;
 
-    // new: optional follow target (e.g., enemy)
     private Transform followTarget;
     private float currentStopDistance;
+    
+    [SerializeField] private bool isMoving;
 
     void Awake()
     {
@@ -22,6 +24,9 @@ public class Movement : MonoBehaviour
         stats = GetComponent<UnitStats>();
         targetPosition = rb.position;
         currentStopDistance = stopDistance;
+        
+        // Freeze rotation in 2D
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     void OnEnable()
@@ -49,11 +54,7 @@ public class Movement : MonoBehaviour
 
     void HandleMouseRightClick(Vector2 worldPosition)
     {
-        // stop following any target, move to a position
-        followTarget = null;
-        currentStopDistance = stopDistance;
-        targetPosition = worldPosition;
-        hasTarget = true;
+        MoveTo(worldPosition);
     }
 
     void FixedUpdate()
@@ -63,54 +64,60 @@ public class Movement : MonoBehaviour
 
     void HandleMovement()
     {
-        if (!hasTarget)
-        {
-            rb.velocity = Vector2.zero;
-            return;
-        }
+        if (!hasTarget) return;
 
-        // if following a transform, update targetPosition from it
+        // Update target position
         if (followTarget != null)
         {
-            // if followTarget was destroyed, Unity's == null will be true
-            if (followTarget == null)
-            {
-                followTarget = null;
-                hasTarget = false;
-                rb.velocity = Vector2.zero;
-                return;
-            }
-
+            if (followTarget == null) { StopMoving(); return; }
             targetPosition = followTarget.position;
         }
 
         Vector2 currentPos = rb.position;
-        Vector2 dir = targetPosition - currentPos;
+        Vector2 targetPos2D = new Vector2(targetPosition.x, targetPosition.y);
+        Vector2 dir = targetPos2D - currentPos;
         float distance = dir.magnitude;
 
-        // If following a moving target, do NOT clear hasTarget when within stop distance.
-        // Instead stop movement but keep following so if the target moves away we'll resume.
-        if (followTarget != null)
+        if (distance <= currentStopDistance)
         {
-            if (distance <= currentStopDistance)
+            if (isMoving)
             {
                 rb.velocity = Vector2.zero;
-                return; // keep hasTarget true so following continues
+                isMoving = false;
             }
+
+
+            StopMoving();
+            // // If following a target (Combat), still rotate towards the target
+            // if (followTarget != null)
+            // {
+            //     RotateTowards(dir); 
+            // }
+            // else
+            // {
+            //      // If it is normal mouse movement, cancel the target immediately
+            // }
+            return;
+        }
+
+        // Movement step
+        isMoving = true;
+        Vector2 moveDir = dir.normalized;
+
+        // 1) Compute this frame's step
+        float step = moveSpeed * Time.fixedDeltaTime;
+
+        // 2) Prevent overshoot: if the step exceeds remaining distance, snap to the target
+        if (step >= distance)
+        {
+             // Snap to target to avoid jitter
+             rb.MovePosition(targetPos2D);
         }
         else
         {
-            if (distance <= currentStopDistance)
-            {
-                hasTarget = false;
-                rb.velocity = Vector2.zero;
-                return;
-            }
+             // Move normally
+             rb.MovePosition(currentPos + moveDir * step);
         }
-
-        Vector2 moveDir = dir.normalized;
-        Vector2 newPos = currentPos + moveDir * moveSpeed * Time.fixedDeltaTime;
-        rb.MovePosition(newPos);
     }
 
     public void MoveTo(Vector2 worldPos)
@@ -119,21 +126,45 @@ public class Movement : MonoBehaviour
         currentStopDistance = stopDistance;
         targetPosition = worldPos;
         hasTarget = true;
+        isMoving = true;
     }
 
-    // new: follow a transform until within stopDistance (used for attacking enemies)
     public void MoveToTarget(Transform target, float stopDist)
     {
         if (target == null) return;
+        
+        // Check immediately: If already standing next to it, do not activate IsMoving anymore
+        // To avoid 1 frame jitter
+        float dist = Vector2.Distance((Vector2)transform.position, (Vector2)target.position);
+        if (dist <= stopDist)
+        {
+             // Still set target to rotate face, but do not set isMoving = true
+             followTarget = target;
+             currentStopDistance = stopDist;
+             hasTarget = true;
+             isMoving = false; 
+             return;
+        }
+
         followTarget = target;
-        currentStopDistance = Mathf.Max(0.01f, stopDist);
+        currentStopDistance = Mathf.Max(0.1f, stopDist);
         hasTarget = true;
+        isMoving = true;
+    }
+
+    public bool IsPlayerMoving()
+    {
+        return isMoving;
     }
 
     public void StopMoving()
     {
         followTarget = null;
         hasTarget = false;
+        
+        // Fully reset velocities to prevent drift
         rb.velocity = Vector2.zero;
+        rb.angularVelocity = 0f; 
+        isMoving = false;
     }
 }
