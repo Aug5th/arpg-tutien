@@ -192,7 +192,8 @@ GameObject:
   - component: {fileID: 482409377}
   - component: {fileID: 482409376}
   - component: {fileID: 482409375}
-  m_Layer: 0
+  - component: {fileID: 482409381}
+  m_Layer: 7
   m_Name: Boss_HoYeu (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -355,6 +356,21 @@ Transform:
   - {fileID: 189466076}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &482409381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482409374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57b86739f1f494144b209518e4927dcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitVfxPrefab: {fileID: 8583935857730318184, guid: b3cfb96c182dedb488ca7eea138b02aa,
+    type: 3}
+  surfaceOffset: 0.1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,7 +605,8 @@ GameObject:
   - component: {fileID: 1208396748}
   - component: {fileID: 1208396749}
   - component: {fileID: 1208396750}
-  m_Layer: 0
+  - component: {fileID: 1208396751}
+  m_Layer: 7
   m_Name: Boss_HoYeu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -752,6 +769,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropTable: {fileID: 11400000, guid: aa479e677b6da1849bd4734791a47741, type: 2}
+--- !u!114 &1208396751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208396743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57b86739f1f494144b209518e4927dcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitVfxPrefab: {fileID: 8583935857730318184, guid: b3cfb96c182dedb488ca7eea138b02aa,
+    type: 3}
+  surfaceOffset: 0.1
 --- !u!1 &1380552978
 GameObject:
   m_ObjectHideFlags: 0
@@ -853,9 +885,9 @@ GameObject:
   - component: {fileID: 1678710844}
   - component: {fileID: 1678710846}
   - component: {fileID: 1678710845}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -985,11 +1017,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 2
   attackSpeed: 1
-  attackRange: 1.2
-  autoAttackRadius: 5
+  attackRange: 1
+  autoAttackRadius: 3
   attackableLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 128
 --- !u!114 &1678710843
 MonoBehaviour:
   m_ObjectHideFlags: 0

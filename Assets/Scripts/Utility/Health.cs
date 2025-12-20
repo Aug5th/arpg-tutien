@@ -12,6 +12,7 @@ public class Health : MonoBehaviour, IDamagable
     public Transform Transform => this.transform;
     public event Action<float> OnHealthChanged;
     public event Action OnDeath;
+    public event Action OnDamageTaken;
 
     private UnitStats unitStats;
 
@@ -78,6 +79,8 @@ public class Health : MonoBehaviour, IDamagable
     {
         if (IsDead) return;
         if (amount <= 0) return;
+
+        OnDamageTaken?.Invoke();
 
         FloatingText.Create(transform.position, "-" + amount.ToString(), Color.red, 1.0f, 0.35f);
 
