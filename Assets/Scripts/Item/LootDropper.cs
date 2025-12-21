@@ -6,6 +6,10 @@ public class LootDropper : MonoBehaviour
     [Header("Drop Table")]
     public DropTableDefinition dropTable;
 
+    [Header("References")]
+    [SerializeField] PlayerInventorySO playerInventory;
+    [SerializeField] PlayerProfileSO playerProfile;
+
     private Health health;
 
     void Awake()
@@ -37,7 +41,7 @@ public class LootDropper : MonoBehaviour
         // 1. EXP
         if (dropTable.expReward > 0)
         {
-            PlayerProfile.Instance.AddExperience(dropTable.expReward);
+            playerProfile.AddExperience(dropTable.expReward);
         }
 
         // 2. Gems
@@ -46,7 +50,7 @@ public class LootDropper : MonoBehaviour
             int amount = Random.Range(dropTable.gemMin, dropTable.gemMax + 1);
             if (amount > 0)
             {
-                PlayerInventory.Instance.AddGems(amount);
+                playerInventory.AddGems(amount);
             }
         }
 
@@ -62,7 +66,7 @@ public class LootDropper : MonoBehaviour
                     int amount = Random.Range(entry.minAmount, entry.maxAmount + 1);
                     if (amount > 0)
                     {
-                        PlayerInventory.Instance.AddItem(entry.item, amount);
+                        playerInventory.AddItem(entry.item, amount);
                     }
                 }
             }
