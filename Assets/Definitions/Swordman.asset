@@ -15,21 +15,17 @@ MonoBehaviour:
   unitId: Player_Swordman
   displayName: Swordman
   baseStats:
-    baseStats:
+    stats:
+    - statType: 4
+      value: 25
     - statType: 0
-      value: 80
+      value: 50
     - statType: 1
       value: 50
-    - statType: 2
-      value: 15
-    - statType: 3
-      value: 5
-    - statType: 4
-      value: 5
     - statType: 5
-      value: 1
-    - statType: 6
-      value: 15
+      value: 10
     - statType: 7
-      value: 200
+      value: 1.5
+    - statType: 6
+      value: 5
   description: A normal swordman

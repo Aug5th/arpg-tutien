@@ -14,16 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropTableId: DT_Boss_HoYeu
   unitId: Boss_HoYeuLuyenKhi
-  expReward: 100
+  expReward: 60
   gemDropChance: 1
   gemMin: 50
   gemMax: 100
   itemDrops:
-  - item: {fileID: 11400000, guid: 58ef9ccbfec910141b3271d92dbcf19d, type: 2}
+  - item: {fileID: 11400000, guid: f5e8d82ac2cb2ff47b36f3c1dc8b6df3, type: 2}
     dropChance: 1
     minAmount: 1
     maxAmount: 1
   - item: {fileID: 11400000, guid: caff1077822c15842aa7d758e7260933, type: 2}
     dropChance: 0.3
+    minAmount: 1
+    maxAmount: 1
+  - item: {fileID: 11400000, guid: 3da185dad5b7bbf4c8a87163730ab749, type: 2}
+    dropChance: 1
     minAmount: 1
     maxAmount: 1

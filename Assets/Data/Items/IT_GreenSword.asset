@@ -9,10 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05d5e979abbc627468d7c9ce5f9b6eb9, type: 3}
+  m_Script: {fileID: 11500000, guid: 7201be0e1fcb97241b7b3461556a16c0, type: 3}
   m_Name: IT_GreenSword
   m_EditorClassIdentifier: 
   id: IT_GreenSword
+  itemType: 1
   itemName: Green Sword
   icon: {fileID: 0}
-  description: Green Sword
+  description: Thanh Truc Phong Van Kiem
+  equipmentType: 0
+  bonusStats:
+    stats:
+    - statType: 4
+      value: 15

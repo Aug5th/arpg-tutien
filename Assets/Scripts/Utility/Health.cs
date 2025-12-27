@@ -31,7 +31,7 @@ public class Health : MonoBehaviour, IDamagable
         {
             return;
         }
-        int newMaxHP = Mathf.Max(1, Mathf.RoundToInt(unitStats.GetStat(StatType.MaxHP)));
+        int newMaxHP = Mathf.Max(1, Mathf.RoundToInt(unitStats.GetStat(StatType.HP)));
         SetMaxHealthFromStats(newMaxHP);
     }
 

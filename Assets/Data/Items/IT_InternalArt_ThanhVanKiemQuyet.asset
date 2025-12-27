@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a90b393a10cc814491753305db4c780, type: 3}
+  m_Name: IT_InternalArt_ThanhVanKiemQuyet
+  m_EditorClassIdentifier: 
+  id: IT_InternalArt_ThanhVanKiemQuyet
+  itemType: 4
+  itemName: 'Thanh Van Kiem Quyet '
+  icon: {fileID: 0}
+  description: 'Thanh Van Kiem Quyet
+
+'
+  equipmentType: 6
+  bonusStats:
+    stats:
+    - statType: 4
+      value: 5
+    - statType: 0
+      value: 10
+    - statType: 1
+      value: 10
+  maxLevel: 3
+  bonusStatByLevel:
+  - stats:
+    - statType: 0
+      value: 30
+    - statType: 1
+      value: 20
+    - statType: 4
+      value: 3
+  - stats:
+    - statType: 0
+      value: 30
+    - statType: 3
+      value: 5
+    - statType: 4
+      value: 5
+  - stats:
+    - statType: 0
+      value: 20
+    - statType: 2
+      value: 5
+    - statType: 4
+      value: 10
+    - statType: 7
+      value: 0.5
+  exeReqToUpNextLevel: 320000009600000090010000

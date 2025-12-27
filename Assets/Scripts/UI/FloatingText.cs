@@ -4,8 +4,8 @@ public class FloatingText : MonoBehaviour
 {
     TextMesh tm;
     float elapsed;
-    float waitTime = 0.5f;   // sau 0.5s mới bắt đầu mờ
-    float fadeTime = 0.5f;   // thời gian mờ
+    float waitTime = 0.5f;   // start fading after 0.5s
+    float fadeTime = 0.5f;   // fade duration
     Vector3 velocity;
     Color baseColor;
 
@@ -20,7 +20,7 @@ public class FloatingText : MonoBehaviour
         tm.fontSize = 64;
         tm.richText = false;
         baseColor = tm.color;
-        velocity = new Vector3(0f, 0.8f, 0f); // di chuyển lên
+        velocity = new Vector3(0f, 0.8f, 0f); // move up
     }
 
     void Update()

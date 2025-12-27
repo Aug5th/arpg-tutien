@@ -10,22 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c11f6849dc2be246947d308e2a4b5d7, type: 3}
-  m_Name: Boar
+  m_Name: Boss_HoYeu
   m_EditorClassIdentifier: 
   unitId: Enemy_Boar
   displayName: Wild Board
   baseStats:
-    baseStats:
-    - statType: 0
-      value: 100
-    - statType: 1
-      value: 0
-    - statType: 2
-      value: 3
-    - statType: 3
-      value: 2
+    stats:
     - statType: 4
-      value: 2
-    - statType: 5
-      value: 2
+      value: 10
+    - statType: 0
+      value: 200
+    - statType: 1
+      value: 20
   description: Wild Board

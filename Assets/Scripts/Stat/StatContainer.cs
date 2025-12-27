@@ -6,7 +6,7 @@ using UnityEngine;
 public class StatsContainer
 {
     [SerializeField]
-    private List<StatValue> baseStats = new List<StatValue>();
+    private List<StatValue> stats = new List<StatValue>();
 
     private Dictionary<StatType, float> _statDict;
 
@@ -14,7 +14,7 @@ public class StatsContainer
     {
         if (_statDict != null) return;
         _statDict = new Dictionary<StatType, float>();
-        foreach (var s in baseStats)
+        foreach (var s in stats)
         {
             if (_statDict.ContainsKey(s.statType))
                 _statDict[s.statType] += s.value;
@@ -38,18 +38,18 @@ public class StatsContainer
         _statDict[type] = current + delta;
 
         bool found = false;
-        for (int i = 0; i < baseStats.Count; i++)
+        for (int i = 0; i < stats.Count; i++)
         {
-            if (baseStats[i].statType == type)
+            if (stats[i].statType == type)
             {
-                baseStats[i] = new StatValue { statType = type, value = _statDict[type] };
+                stats[i] = new StatValue { statType = type, value = _statDict[type] };
                 found = true;
                 break;
             }
         }
         if (!found)
         {
-            baseStats.Add(new StatValue { statType = type, value = _statDict[type] });
+            stats.Add(new StatValue { statType = type, value = _statDict[type] });
         }
     }
 
@@ -64,5 +64,5 @@ public class StatsContainer
         }
     }
 
-    public IReadOnlyList<StatValue> GetAllRawStats() => baseStats;
+    public IReadOnlyList<StatValue> GetAllRawStats() => stats;
 }

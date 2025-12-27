@@ -1,12 +1,23 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "TuTien/Item Definition", fileName = "NewItem")]
 public class ItemDefinition : ScriptableObject
 {
-    public string id;      
+    [Header("Basic Info")]
+    public string id;
+    public ItemType itemType;      
     public string itemName; 
     public Sprite icon; 
     
     [TextArea]
     public string description; 
+
+    public virtual void UseItem()
+    {
+        Debug.Log($"Using item: {itemName}");
+    }
+
+    public virtual void InspectItem()
+    {
+        Debug.Log($"Inspecting item: {itemName}\nDescription: {description}");
+    }
 }

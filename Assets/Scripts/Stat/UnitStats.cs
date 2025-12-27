@@ -48,7 +48,7 @@ public class UnitStats : MonoBehaviour
 
     // convenience properties
     public int Attack      => Mathf.RoundToInt(GetStat(StatType.Attack));
-    public float MaxHP     => GetStat(StatType.MaxHP);
-    public float MaxMP     => GetStat(StatType.MaxMP);
+    public float HP        => GetStat(StatType.HP);
+    public float MP        => GetStat(StatType.MP);
     public float MoveSpeed => GetStat(StatType.MoveSpeed);
 }

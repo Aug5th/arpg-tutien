@@ -9,10 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05d5e979abbc627468d7c9ce5f9b6eb9, type: 3}
+  m_Script: {fileID: 11500000, guid: fe96d571ae2a4c84eaad478050948cce, type: 3}
   m_Name: IT_HealthPotion_Small
   m_EditorClassIdentifier: 
   id: IT_HealthPotion_Small
+  itemType: 0
   itemName: Small Health Potion
   icon: {fileID: 0}
   description: Small Health Potion
+  consumableType: 0
+  effectStats:
+  - statType: 0
+    value: 10
+  duration: 15

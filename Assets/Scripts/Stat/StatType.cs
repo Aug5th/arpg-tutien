@@ -1,12 +1,14 @@
 public enum StatType
 {
-    MaxHP = 0,
-    MaxMP = 1,
-    Attack = 2,
-    Defense = 3,
-    MoveSpeed = 4,
-    AttackSpeed = 5,
-    CritChance = 6,
-    CritDamage = 7,
+    HP = 0,
+    MP = 1,
+    HPRegen = 2,
+    MPRegen = 3,
+    Attack = 4,
+    Defense = 5,
+    MoveSpeed = 6,
+    AttackSpeed = 7,
+    CritChance = 8,
+    CritDamage = 9,
     
 }
