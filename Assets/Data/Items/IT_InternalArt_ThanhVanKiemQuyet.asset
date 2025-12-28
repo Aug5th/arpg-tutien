@@ -16,7 +16,7 @@ MonoBehaviour:
   itemType: 4
   itemRarity: 2
   itemName: 'Thanh Van Kiem Quyet '
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 4b0e28cccc8c89943aef1440505a761d, type: 3}
   description: 'Thanh Van Kiem Quyet
 
 '

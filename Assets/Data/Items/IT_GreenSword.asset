@@ -15,8 +15,8 @@ MonoBehaviour:
   id: IT_GreenSword
   itemType: 1
   itemRarity: 1
-  itemName: Green Sword
-  icon: {fileID: 0}
+  itemName: Sword
+  icon: {fileID: 21300000, guid: fc14d35fd25b7d749afc2d4691be4ab7, type: 3}
   description: Thanh Truc Phong Van Kiem
   equipmentType: 0
   bonusStats:
