@@ -17,6 +17,7 @@ public class UnitStats : MonoBehaviour
     void Start()
     {
         RecalculateFinalStats();
+        Debug.Log("[UnitStats] Initial stats calculated.");
     }
 
     /// <summary>

@@ -16,10 +16,12 @@ public class PlayerStatsLinker : MonoBehaviour
 
     void Start()
     {
-        // Update stats immediately when game starts
         UpdatePlayerStats();
-
-        // Equip starting internal art if provided
+        /* 
+        Equip starting Internal Art for testing purposes
+        - Internal Art is a type of EquipmentItemDefinition => apply item bonus stats
+        - Internal Art start at level 1 by default => apply level 1 (index 0) bonus stats
+        */
         if (startingInternalArt != null && playerProfile != null)
         {
             playerProfile.EquipItem(startingInternalArt);
