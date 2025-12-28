@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: IT_InternalArt_ThanhVanKiemQuyet
   itemType: 4
+  itemRarity: 2
   itemName: 'Thanh Van Kiem Quyet '
   icon: {fileID: 0}
   description: 'Thanh Van Kiem Quyet

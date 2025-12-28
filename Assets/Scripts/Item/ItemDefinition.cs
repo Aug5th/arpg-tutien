@@ -4,7 +4,8 @@ public class ItemDefinition : ScriptableObject
 {
     [Header("Basic Info")]
     public string id;
-    public ItemType itemType;      
+    public ItemType itemType;
+    public ItemRarity itemRarity;      
     public string itemName; 
     public Sprite icon; 
     
