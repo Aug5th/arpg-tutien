@@ -40,4 +40,24 @@ public class InternalArtItemDefinition : EquipmentItemDefinition
             }
         }
     }
+
+    public StatsContainer GetBonusStatsAtLevel(int level)
+    {
+        if (level < 1 || level > maxLevel)
+        {
+            Debug.LogWarning($"[InternalArtItemDefinition] Level {level} is out of range for item {itemName}.");
+            return new StatsContainer();
+        }
+        return bonusStatByLevel[level - 1];
+    }
+
+    public int GetExpRequirementForNextLevel(int level)
+    {
+        if (level < 1 || level >= maxLevel)
+        {
+            Debug.LogWarning($"[InternalArtItemDefinition] Level {level} is out of range for item {itemName}.");
+            return -1;
+        }
+        return exeReqToUpNextLevel[level - 1];
+    }
 }

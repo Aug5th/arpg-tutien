@@ -6,14 +6,14 @@ public class InternalArtState
 {
     // Reference to the static data definition
     public InternalArtItemDefinition definition;
-    public int currentLevel = 0;
+    public int currentLevel = 1;
     public int currentXP = 0;
     public int maxXP;
 
     public InternalArtState(InternalArtItemDefinition def)
     {
         definition = def;
-        currentLevel = 0;
+        currentLevel = 1;
         currentXP = 0;
         RecalculateMaxXP();
     }
@@ -25,7 +25,7 @@ public class InternalArtState
     {
         if (definition != null && definition.exeReqToUpNextLevel.Count > 0 && currentLevel < definition.maxLevel)
         {
-            maxXP = definition.exeReqToUpNextLevel[currentLevel];
+            maxXP = definition.GetExpRequirementForNextLevel(currentLevel);
         }
     }
 
@@ -66,14 +66,6 @@ public class InternalArtState
     /// <returns>StatsContainer for the current level</returns>
     public StatsContainer GetLevelUpStatsBonus()
     {
-        if (definition == null || definition.bonusStatByLevel.Count == 0)
-            return new StatsContainer();
-
-        int index = Mathf.Clamp(currentLevel, 0, definition.maxLevel);
-        if (index > 0)
-        {
-            index--;
-        }
-        return definition.bonusStatByLevel[index];
+        return definition.GetBonusStatsAtLevel(currentLevel);
     }
 }
